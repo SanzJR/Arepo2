@@ -1,0 +1,96 @@
+from collections import Counter
+import statistics
+
+colors = [
+# Monday
+"GREEN","YELLOW","GREEN","BROWN","BLUE","PINK","BLUE","YELLOW","ORANGE",
+"CREAM","ORANGE","RED","WHITE","BLUE","WHITE","BLUE","BLUE","BLUE","GREEN",
+
+# Tuesday 
+"ASH","BROWN","GREEN","BROWN","BLUE","BLUE","BLUE","PINK","PINK","ORANGE",
+"ORANGE","RED","WHITE","BLUE","WHITE","WHITE","BLUE","BLUE","BLUE",
+
+# Wednesday
+"GREEN","YELLOW","GREEN","BROWN","BLUE","PINK","RED","YELLOW","ORANGE",
+"RED","ORANGE","RED","BLUE","BLUE","WHITE","BLUE","BLUE","WHITE","WHITE",
+
+# Thursday
+"BLUE","BLUE","GREEN","WHITE","BLUE","BROWN","PINK","YELLOW","ORANGE",
+"CREAM","ORANGE","RED","WHITE","BLUE","WHITE","BLUE","BLUE","BLUE","GREEN",
+
+# Friday
+"GREEN","WHITE","GREEN","BROWN","BLUE","BLUE","BLACK","WHITE","ORANGE",
+"RED","RED","WHITE","BLUE","WHITE","BLUE","BLUE","BLUE","WHITE"
+]
+
+freq = Counter(colors)
+
+print("Frequencies:", freq)
+
+# Mode ( the most worn)
+mode_color = freq.most_common(1)[0]
+print("Most worn color:", mode_color)
+
+# Mean (the most frequent)
+mean_color = mode_color[0]
+print("Mean color (interpreted):", mean_color)
+
+# Median (working on frequency distribution)
+sorted_colors = sorted(freq.items(), key=lambda x: x[1])
+median_color = sorted_colors[len(sorted_colors)//2]
+print("Median color:", median_color)
+
+# Variance (on frequencies)
+values = list(freq.values())
+variance = statistics.variance(values)
+print("Variance:", variance)
+
+# Probability of RED
+total = sum(values)
+prob_red = freq["RED"] / total
+print("P(RED):", prob_red)
+
+
+
+def recursive_search(arr, target, index=0):
+    if index >= len(arr):
+        return False
+    if arr[index] == target:
+        return True
+    return recursive_search(arr, target, index + 1)
+
+print(recursive_search([1,2,3,4,5], 4))
+
+
+
+
+import random
+
+binary = ''.join(str(random.randint(0,1)) for _ in range(4))
+decimal = int(binary, 2)
+
+print("Binary:", binary)
+print("Decimal:", decimal)
+
+
+
+import random
+
+binary = ''.join(str(random.randint(0,1)) for _ in range(4))
+decimal = int(binary, 2)
+
+print("Binary:", binary)
+print("Decimal:", decimal)
+
+
+
+
+a, b = 0, 1
+total = 0
+
+for _ in range(50):
+    total += a
+    a, b = b, a + b
+
+print("Sum:", total)
+    
